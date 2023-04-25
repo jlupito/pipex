@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarthaud <jarthaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlupito <jlupito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:06:00 by jarthaud          #+#    #+#             */
-/*   Updated: 2023/04/21 16:55:37 by jarthaud         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:57:21 by jlupito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	err_mg(char *argv, char *str, t_pipex pipex, int flag)
 		free(pipex.split_paths);
 		close_all(pipex);
 	}
-	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
 	exit(EXIT_FAILURE);
 }
 

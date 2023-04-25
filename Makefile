@@ -5,7 +5,7 @@ INCLUDES = -I./includes
 
 #source
 SRCS_DIR = sources/
-SRCS = \
+SRCS = pipex.c utils.c \
 
 SRCS_PREFIXED = $(addprefix $(SRCS_DIR), $(SRCS))
 

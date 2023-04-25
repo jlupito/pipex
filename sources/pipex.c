@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarthaud <jarthaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlupito <jlupito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:08:25 by jarthaud          #+#    #+#             */
-/*   Updated: 2023/04/21 16:54:02 by jarthaud         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:20:44 by jlupito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	child_one(t_pipex pipex, char *cmd1, char **env)
 {
 	dup2(pipex.f1, STDIN_FILENO);
 	dup2(pipex.pipefd[1], STDOUT_FILENO);
-	close_all(pipex);
+	// close_all(pipex);
+	close(pipex.pipefd[0]);
 	exec_cmd(pipex, cmd1, env);
 	exit(EXIT_FAILURE);
 }
@@ -25,7 +26,8 @@ void	child_two(t_pipex pipex, char *cmd2, char **env)
 {
 	dup2(pipex.pipefd[0], STDIN_FILENO);
 	dup2(pipex.f2, STDOUT_FILENO);
-	close_all(pipex);
+	// close_all(pipex);
+	close(pipex.pipefd[1]);
 	exec_cmd(pipex, cmd2, env);
 	exit(EXIT_FAILURE);
 }
